@@ -1,0 +1,22 @@
+version: '2'
+
+volumes:
+  nfsdnsmasq:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=10.0.0.100,rw
+      device: ":/mnt/barracuda/nfsdnsmasq"
+
+services:
+  dnsmasq:
+    image: jpillora/dnsmasq
+    container_name: dnsmasq
+    restart: unless-stopped
+    ports:
+      - 53:53
+      - 5380:8080
+    volumes:
+      - nfsdnsmasq:/etc/dnsmasq.conf
+    logging:
+      max-size: "100m"
