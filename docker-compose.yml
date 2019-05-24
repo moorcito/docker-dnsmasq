@@ -17,7 +17,7 @@ services:
       - 53:53
       - 5380:8080
     volumes:
-      - nfsdnsmasq:/etc/dnsmasq.conf
+      - nfsdnsmasq:/etc
     logging:
       options:
         max-size: '100m'
