@@ -19,4 +19,5 @@ services:
     volumes:
       - nfsdnsmasq:/etc/dnsmasq.conf
     logging:
-      max-size: "100m"
+      options:
+        max-size: '100m'
